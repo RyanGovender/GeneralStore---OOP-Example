@@ -37,7 +37,5 @@ namespace GeneralStore.LogicLayer
             }
            return _returnDefault;
         }
-
-        
     }
 }

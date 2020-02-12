@@ -11,17 +11,18 @@ namespace GeneralStore.LogicLayer
         private string code="";
         private int id;
         private int quantity;
+        private UserType _usertype;
 
-        public UserInterfaceLogic()
+        public UserInterfaceLogic(UserType customer)
         {
-
+            _usertype = customer;
         }
-        public  void Simulate(UserType customer)
+        public List<int> BuyItems()
         {
             List<int> numbers = new List<int>();
             do
             {
-                Console.WriteLine("Enter the product code of the item you want to buy:");
+                Console.WriteLine("Enter the product code of the item you want to buy (Enter Done to complete your order.):");
                 code = Console.ReadLine();
                 if (int.TryParse(code, out id))
                 {
@@ -39,10 +40,10 @@ namespace GeneralStore.LogicLayer
                     Console.WriteLine("Invalid Product Code.");
                 }
 
-            } while (!code.Equals("Done"));
+            } while (!code.ToLower().Equals("done"));
 
-            CalculationLogic cal = new CalculationLogic(numbers, customer);
-            Console.WriteLine(cal.CalculateFinalCost());
+            return numbers;
+
         }
 }
     }
