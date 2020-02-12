@@ -68,6 +68,7 @@ namespace GeneralStore.LogicLayer
                 Console.WriteLine($" Item Product Code : {item.id}" +
                     $"\n Product Name : {item.Name}" +
                     $"\n Product Cost :{item.Price}" +
+                    $"\n Available Stock :{item.Quantity}" +
                     $"\n  Expiry Date : {item.ExpiryDate}" +
                     $"\n-----------------------------------------------");
             }
