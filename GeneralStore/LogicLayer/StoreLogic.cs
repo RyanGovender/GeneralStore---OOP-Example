@@ -47,9 +47,16 @@ namespace GeneralStore.LogicLayer
             {
                 if (item.id == id)
                 {
-                    Console.WriteLine("The stock before :" + item.Quantity);
-                    item.Quantity--;
-                    Console.WriteLine("The stock after"+ item.Quantity);
+                    if(item.Quantity>0)
+                    {
+                        Console.WriteLine("The stock before :" + item.Quantity);
+                        item.Quantity--;
+                        Console.WriteLine("The stock after" + item.Quantity);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Item {item.Name} is out of stock...");
+                    }
                     break;
                 }
             }

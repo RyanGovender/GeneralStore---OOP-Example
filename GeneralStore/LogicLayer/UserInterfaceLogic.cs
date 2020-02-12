@@ -12,6 +12,7 @@ namespace GeneralStore.LogicLayer
         private int id;
         private int quantity;
         private UserType _usertype;
+        private List<int> numbers = new List<int>();
 
         public UserInterfaceLogic(UserType customer)
         {
@@ -19,7 +20,7 @@ namespace GeneralStore.LogicLayer
         }
         public List<int> BuyItems()
         {
-            List<int> numbers = new List<int>();
+          
             do
             {
                 Console.WriteLine("Enter the product code of the item you want to buy (Enter Done to complete your order.):");
@@ -45,5 +46,7 @@ namespace GeneralStore.LogicLayer
             return numbers;
 
         }
+
+        
 }
     }
