@@ -42,11 +42,24 @@ namespace GeneralStore.LogicLayer
             {
                 if(item.id==id)
                 {
+                    UpdateFoodQuantity(id);
                     if (IsFoodExipred(id)) return item.Price / _isFoodExipredValue;
                     return item.Price; 
                 }
             }
             return _returnDefaultAmount;
+        }
+
+        private static void UpdateFoodQuantity(int id)
+        {
+            foreach (var item in foods)
+            {
+                if (item.id == id)
+                {
+                    item.Quantity--;
+                    break;
+                }
+            }
         }
     }
 }

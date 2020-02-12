@@ -7,43 +7,58 @@ namespace GeneralStore.LogicLayer
 {
   public  class CalculationLogic
     {
-        private List<int> _numbers;
-        private Customer _customer;
-        private static double _bulkClientDiscount ;
-        private static double _casualClientDiscount;
-        private static double _returnDefaultAmount;
+        private List<int> _itemInCart;
+        private UserType _customer;
 
-        public CalculationLogic(List<int> x, Customer customer)
+        public CalculationLogic(List<int> cart, UserType customer)
         {
-            _numbers = x;
+            _itemInCart = cart;
             _customer = customer;
-            _bulkClientDiscount = 1.2;
-            _casualClientDiscount = 2;
-            _returnDefaultAmount = 0;
         }
 
-        public double CalculateTotal()
+        public double CalculateFoodCost()
         {
             double total = 0;
-            foreach(var item in _numbers)
+            foreach (var item in _itemInCart)
             {
-                total+=FoodLogic.GetFoodPrice(item);
-                if(_customer.TypeOfClient == UserType.CasualCustomer)
-                total += DrinkLogic.AddAlcoholTax(item);
+                total += FoodLogic.GetFoodPrice(item);
             }
             return total;
         }
 
+        public double CalculateDrinkCost()
+        {
+            double total = 0;
+            foreach (var customerType in CustomerLogic._userTypes)
+            {
+                if(customerType.Id == _customer.Id)
+                {
+                    foreach (var itemsInCart in _itemInCart)
+                    {
+                        total += DrinkLogic.AddAlcoholTax(itemsInCart, customerType.AlcoholTax);
+                        total += DrinkLogic.GetDrinkPrice(itemsInCart);
+                    }
+                    break;
+                }
+            }
+            return total;
+        }
+
+        public double CostPrice()
+        {
+          return  CalculateFoodCost() + CalculateDrinkCost();
+        }
         public double CalculateFinalCost()
         {
-           if(_customer.TypeOfClient == UserType.BulkCustomer)
+           double costPrice = CostPrice();
+           foreach(var user in CustomerLogic._userTypes)
             {
-                return CalculateTotal() * _bulkClientDiscount;
+                if(_customer.Id == user.Id)
+                {
+                    return costPrice + (costPrice * user.UserMarkup);
+                }
             }
-            else
-            {
-                return CalculateTotal() * _casualClientDiscount;
-            }
+            return costPrice;
         }
     }
 }

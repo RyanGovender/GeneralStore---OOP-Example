@@ -7,7 +7,7 @@ namespace GeneralStore.Models
     public class Product
     {
         public int id { get;}
-        private string Name { get; set; }
+        private string Name { get;}
         public double Price { get;}
         public int Quantity { get; set; }
 

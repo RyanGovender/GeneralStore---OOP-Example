@@ -8,10 +8,9 @@ namespace GeneralStore.LogicLayer
   public class DrinkLogic
     {
         public static List<Drink> drinks = GetAllDrinks();
-        private static double _alcoholTax =0.15;
         private static double _defaultReturnAmount = 0;
 
-        public static List<Drink> GetAllDrinks()
+        private static List<Drink> GetAllDrinks()
         {
             drinks = new List<Drink>
             {
@@ -21,7 +20,7 @@ namespace GeneralStore.LogicLayer
             return drinks;
         }
 
-        public static double AddAlcoholTax(int id)
+        public static double AddAlcoholTax(int id, double _alcoholTax)
         {
             foreach(var item in drinks)
             {
@@ -29,6 +28,31 @@ namespace GeneralStore.LogicLayer
                     return item.Price * _alcoholTax;
             }
             return _defaultReturnAmount;
+        }
+
+        public static double GetDrinkPrice(int id)
+        {
+            foreach (var item in drinks)
+            {
+                if (item.id == id)
+                {
+                    UpdateDrinkQuantity(id);
+                    return item.Price;
+                }
+            }
+            return _defaultReturnAmount;
+        }
+
+        private static void UpdateDrinkQuantity(int id)
+        {
+            foreach(var item in drinks)
+            {
+                if(item.id == id)
+                {
+                    item.Quantity--;
+                    break;
+                }
+            }
         }
 
     }

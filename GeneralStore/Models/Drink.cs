@@ -6,7 +6,7 @@ namespace GeneralStore.Models
 {
     public class Drink : Product
     {
-        private double DrinkVolume { get; set; }
+        public double DrinkVolume { get;}
         public bool AlcoholicOrNonAloholic { get;}
 
         public Drink()

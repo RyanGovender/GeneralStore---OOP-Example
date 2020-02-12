@@ -10,18 +10,19 @@ namespace GeneralStore
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-   
-            var customer1 = new Customer(UserType.CasualCustomer,"Name");
+
+            var customer1 = new UserType("Ben",2);
 
             List<int> numbers = new List<int>();
             numbers.Add(1);
             numbers.Add(2);
-            numbers.Add(3);
+            numbers.Add(1);
+            numbers.Add(8);
 
             CalculationLogic cal = new CalculationLogic(numbers,customer1);
             Console.WriteLine(cal.CalculateFinalCost());
 
-            StoreLogic.AddFood();
+            //StoreLogic.AddFood();
             Console.ReadKey();
         }
     }

@@ -6,7 +6,7 @@ namespace GeneralStore.Models
 {
    public class SupplierProduct
     {
-        public Product Product{ get; set; }
+        public Product Product{ get; }
 
         public SupplierProduct()
         {
