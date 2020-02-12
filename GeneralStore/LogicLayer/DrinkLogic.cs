@@ -1,6 +1,7 @@
 ﻿using GeneralStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GeneralStore.LogicLayer
@@ -9,6 +10,11 @@ namespace GeneralStore.LogicLayer
     {
         public static List<Drink> drinks = GetAllDrinks();
         private static double _defaultReturnAmount = 0;
+
+        public DrinkLogic(double defaultAmount)
+        {
+            _defaultReturnAmount = defaultAmount;
+        }
 
         private static List<Drink> GetAllDrinks()
         {
@@ -45,13 +51,18 @@ namespace GeneralStore.LogicLayer
 
         private static void UpdateDrinkQuantity(int id)
         {
+            StoreLogic.RemoveStock(drinks.Cast<Product>().ToList(), id);
+        }
+
+        public static void DisplayDrinks()
+        {
             foreach(var item in drinks)
             {
-                if(item.id == id)
-                {
-                    item.Quantity--;
-                    break;
-                }
+                Console.WriteLine($"Item Product Code : {item.id}" +
+                    $"\n Product Name : {item.Name}" +
+                    $"\n Product Cost :{item.Price}" +
+                    $"\n Alcohol : {item.AlcoholicOrNonAloholic}" +
+                    $"\n-----------------------------------------------");
             }
         }
 

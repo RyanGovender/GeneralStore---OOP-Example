@@ -9,7 +9,8 @@ namespace GeneralStore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DrinkLogic.DisplayDrinks();
+            FoodLogic.DisplayFoods();
 
             var customer1 = new UserType("Ben",2);
 
@@ -18,10 +19,12 @@ namespace GeneralStore
             numbers.Add(2);
             numbers.Add(1);
             numbers.Add(8);
+            numbers.Add(7);
 
             CalculationLogic cal = new CalculationLogic(numbers,customer1);
             Console.WriteLine(cal.CalculateFinalCost());
 
+           
             //StoreLogic.AddFood();
             Console.ReadKey();
         }

@@ -10,6 +10,11 @@ namespace GeneralStore.LogicLayer
         public static List<UserType> _userTypes= GetTypesOfUser();
         private static double _returnDefault = 0;
 
+        public CustomerLogic(double defaultAmount)
+        {
+            _returnDefault = 0;
+        }
+
         public static List<UserType> GetTypesOfUser()
         {
             _userTypes = new List<UserType>

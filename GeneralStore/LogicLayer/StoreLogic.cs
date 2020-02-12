@@ -40,5 +40,19 @@ namespace GeneralStore.LogicLayer
                 }
             }
         }
+
+        public static void RemoveStock(List<Product> product,int id)
+        {
+            foreach (var item in product)
+            {
+                if (item.id == id)
+                {
+                    Console.WriteLine("The stock before :" + item.Quantity);
+                    item.Quantity--;
+                    Console.WriteLine("The stock after"+ item.Quantity);
+                    break;
+                }
+            }
+        }
     }
 }

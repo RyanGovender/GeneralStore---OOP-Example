@@ -12,6 +12,12 @@ namespace GeneralStore.LogicLayer
         private static double _isFoodExipredValue = 2;
         private static double _returnDefaultAmount = 0;
 
+        public FoodLogic(double foodExipredDiscount, double returnAmount)
+        {
+            _isFoodExipredValue = foodExipredDiscount;
+            _returnDefaultAmount = returnAmount;
+        }
+
         public static List<Food> GetFoods()
         {
             foods = new List<Food>
@@ -52,13 +58,18 @@ namespace GeneralStore.LogicLayer
 
         private static void UpdateFoodQuantity(int id)
         {
+            StoreLogic.RemoveStock(foods.Cast<Product>().ToList(), id);
+        }
+
+        public static void DisplayFoods()
+        {
             foreach (var item in foods)
             {
-                if (item.id == id)
-                {
-                    item.Quantity--;
-                    break;
-                }
+                Console.WriteLine($" Item Product Code : {item.id}" +
+                    $"\n Product Name : {item.Name}" +
+                    $"\n Product Cost :{item.Price}" +
+                    $"\n  Expiry Date : {item.ExpiryDate}" +
+                    $"\n-----------------------------------------------");
             }
         }
     }
