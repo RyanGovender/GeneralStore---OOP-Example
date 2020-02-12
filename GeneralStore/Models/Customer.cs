@@ -6,7 +6,7 @@ namespace GeneralStore.Models
 {
    public abstract class Customer
     {
-        public string CustomerName { get; set; }
+        public string CustomerName { get;}
 
         public Customer()
         {
