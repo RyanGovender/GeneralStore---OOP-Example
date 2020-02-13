@@ -22,7 +22,7 @@ namespace GeneralStore.LogicLayer
         {
             foods = new List<Food>
             {
-                new Food(1,"Burger King",45,"Burger",true,DateTime.Now.AddDays(6),50),
+                new Food(1,"Burger King",45,"Burger",true,DateTime.Now.AddDays(6),10),
                 new Food(2,"Burger King",45,"Burger",true,DateTime.Now,87),
                 new Food(3,"Burger King",45,"Burger",true,DateTime.Now,45),
                 new Food(4,"Burger King",45,"Burger",true,DateTime.Now,75),
