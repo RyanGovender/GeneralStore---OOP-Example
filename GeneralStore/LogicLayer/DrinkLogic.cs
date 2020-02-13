@@ -38,20 +38,7 @@ namespace GeneralStore.LogicLayer
 
         public static double GetDrinkPrice(int id)
         {
-            foreach (var item in drinks)
-            {
-                if (item.id == id)
-                {
-                    UpdateDrinkQuantity(id);
-                    return item.Price;
-                }
-            }
-            return _defaultReturnAmount;
-        }
-
-        private static void UpdateDrinkQuantity(int id)
-        {
-            StoreLogic.RemoveStock(drinks.Cast<Product>().ToList(), id);
+          return StoreLogic.GetItemPrice(drinks.Cast<Product>().ToList(), id);
         }
 
         public static void DisplayDrinks()

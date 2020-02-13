@@ -44,21 +44,7 @@ namespace GeneralStore.LogicLayer
 
         public static double GetFoodPrice(int id)
         {
-            foreach(var item in foods)
-            {
-                if(item.id==id)
-                {
-                    UpdateFoodQuantity(id);
-                    if (IsFoodExipred(id)) return item.Price / _isFoodExipredValue;
-                    return item.Price; 
-                }
-            }
-            return _returnDefaultAmount;
-        }
-
-        private static void UpdateFoodQuantity(int id)
-        {
-            StoreLogic.RemoveStock(foods.Cast<Product>().ToList(), id);
+           return StoreLogic.GetItemPrice(foods.Cast<Product>().ToList(), id);
         }
 
         public static void DisplayFoods()

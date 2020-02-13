@@ -9,7 +9,7 @@ namespace GeneralStore.LogicLayer
    public class StoreLogic
     {
         private static List<SupplierProduct> _stock= GetStock();
-
+        private static double _defaultReturnAmount = 0;
         public static List<SupplierProduct> GetStock()
         {
             _stock = new List<SupplierProduct>
@@ -60,6 +60,19 @@ namespace GeneralStore.LogicLayer
                     break;
                 }
             }
+        }
+
+        public static double GetItemPrice(List<Product> items,int id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                {
+                    RemoveStock(items,id);
+                    return item.Price;
+                }
+            }
+            return _defaultReturnAmount;
         }
     }
 }
