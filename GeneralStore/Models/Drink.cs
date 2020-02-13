@@ -13,6 +13,11 @@ namespace GeneralStore.Models
         {
 
         }
+        public Drink(int id, string name, double price, int quantity) : base(id, name, price, quantity)
+        {
+
+        }
+
 
         public Drink(int id, string name, double price, double drinkVolume, bool alcohol,int quantity) : base(id,name,price, quantity)
         {

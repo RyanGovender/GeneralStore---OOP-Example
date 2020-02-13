@@ -10,12 +10,13 @@ namespace GeneralStore.LogicLayer
     {
         private static List<SupplierProduct> _stock= GetStock();
         private static double _defaultReturnAmount = 0;
+
         public static List<SupplierProduct> GetStock()
         {
             _stock = new List<SupplierProduct>
             {
-                new SupplierProduct(new Product(1,"Burger King",45,80)),
-                new SupplierProduct(new Product(9,"Coke",20,1000))
+                new SupplierProduct(new Food(1,"Burger King",45,80)),
+                new SupplierProduct(new Drink(9,"Coke",20,1000))
             };
             return _stock;
         }

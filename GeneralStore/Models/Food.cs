@@ -15,6 +15,11 @@ namespace GeneralStore.Models
 
         }
 
+        public Food(int id, string name, double price,int quantity):base(id,name,price,quantity)
+        {
+
+        }
+
         public Food(int id,string name, double price, string typeOfFood, bool perishable, int quantity) : base(id,name, price, quantity)
         {
             TypeOfFood = typeOfFood;

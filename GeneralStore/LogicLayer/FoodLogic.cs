@@ -10,12 +10,10 @@ namespace GeneralStore.LogicLayer
     {
         public static List<Food> foods= GetFoods();
         private static double _isFoodExipredValue = 2;
-        private static double _returnDefaultAmount = 0;
-
-        public FoodLogic(double foodExipredDiscount, double returnAmount)
+  
+        public FoodLogic(double foodExipredDiscount)
         {
             _isFoodExipredValue = foodExipredDiscount;
-            _returnDefaultAmount = returnAmount;
         }
 
         public static List<Food> GetFoods()
@@ -44,7 +42,8 @@ namespace GeneralStore.LogicLayer
 
         public static double GetFoodPrice(int id)
         {
-           return StoreLogic.GetItemPrice(foods.Cast<Product>().ToList(), id);
+            double price = StoreLogic.GetItemPrice(foods.Cast<Product>().ToList(), id);
+            return IsFoodExipred(id) ? price / _isFoodExipredValue : price;
         }
 
         public static void DisplayFoods()

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GeneralStore.Models
 {
-    public class Product
+    public abstract class Product
     {
         public int id { get;}
         public string Name { get;}
