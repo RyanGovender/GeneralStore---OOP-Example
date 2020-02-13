@@ -20,6 +20,19 @@ namespace GeneralStore.LogicLayer
             return _stock;
         }
 
+        public static double GetItemPrice(List<Product> items, int id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                {
+                    RemoveStock(items, id);
+                    return item.Price;
+                }
+            }
+            return _defaultReturnAmount;
+        }
+
         public static void AddFood()
         {
             UpdateStock(FoodLogic.foods.Cast<Product>().ToList());
@@ -49,30 +62,16 @@ namespace GeneralStore.LogicLayer
                 {
                     if(item.Quantity>0)
                     {
-                        Console.WriteLine("The stock before :" + item.Quantity);
                         item.Quantity--;
-                        Console.WriteLine("The stock after" + item.Quantity);
                     }
                     else
                     {
+                       
                         Console.WriteLine($"Item {item.Name} is out of stock...");
                     }
                     break;
                 }
             }
-        }
-
-        public static double GetItemPrice(List<Product> items,int id)
-        {
-            foreach (var item in items)
-            {
-                if (item.id == id)
-                {
-                    RemoveStock(items,id);
-                    return item.Price;
-                }
-            }
-            return _defaultReturnAmount;
         }
     }
 }

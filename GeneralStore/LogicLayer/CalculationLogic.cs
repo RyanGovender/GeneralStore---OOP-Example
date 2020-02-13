@@ -7,8 +7,9 @@ namespace GeneralStore.LogicLayer
 {
   public  class CalculationLogic
     {
-        private List<int> _itemInCart;
+        private static List<int> _itemInCart;
         private UserType _customer;
+        private double _pointer = 0;
 
         public CalculationLogic(List<int> cart, UserType customer)
         {
@@ -61,7 +62,7 @@ namespace GeneralStore.LogicLayer
             return costPrice;
         }
 
-        public void RemoveItemFromList(int id)
+        public static void RemoveItemFromList(int id)
         {
             _itemInCart.Remove(id);
         }
