@@ -1,5 +1,6 @@
 ﻿using GeneralStore.LogicLayer;
 using GeneralStore.Models;
+using GeneralStore.Payment;
 using System;
 using System.Collections.Generic;
 
@@ -9,6 +10,7 @@ namespace GeneralStore
     {
         static void Main(string[] args)
         {
+            var paymentOption = new PaymentOption();
             DrinkLogic.DisplayDrinks();
             FoodLogic.DisplayFoods();
             var customer1 = new UserType("Ben", 2);
@@ -16,8 +18,9 @@ namespace GeneralStore
             var items=UserI.BuyItems();
             CalculationLogic cal = new CalculationLogic(items, customer1);
             Console.WriteLine("Your total cost is :"+cal.CalculateFinalCost());
+            paymentOption.PayOption(cal.CalculateFinalCost());
 
-          
+
             Console.ReadKey();
         }
     }
