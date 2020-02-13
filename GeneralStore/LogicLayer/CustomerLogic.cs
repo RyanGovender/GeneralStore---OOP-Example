@@ -12,7 +12,7 @@ namespace GeneralStore.LogicLayer
 
         public CustomerLogic(double defaultAmount)
         {
-            _returnDefault = 0;
+            _returnDefault = defaultAmount;
         }
 
         public static List<UserType> GetTypesOfUser()

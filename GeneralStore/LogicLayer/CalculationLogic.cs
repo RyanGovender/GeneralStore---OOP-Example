@@ -9,8 +9,7 @@ namespace GeneralStore.LogicLayer
     {
         private static List<int> _itemInCart;
         private UserType _customer;
-        private double _pointer = 0;
-
+      
         public CalculationLogic(List<int> cart, UserType customer)
         {
             _itemInCart = cart;
@@ -61,7 +60,5 @@ namespace GeneralStore.LogicLayer
             }
             return costPrice;
         }
-
-       
     }
 }
