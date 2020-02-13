@@ -64,14 +64,23 @@ namespace GeneralStore.LogicLayer
                     {
                         item.Quantity--;
                     }
-                    else
-                    {
-                        CalculationLogic.RemoveItemFromList(id);
-                        Console.WriteLine($"Item {item.Name} is out of stock...");
-                    }
                     break;
                 }
             }
+        }
+
+        public static bool CheckQuantity(int quantity)
+        {
+            List<Product> tempFoodList = FoodLogic.foods.Cast<Product>().ToList();
+            List<Product> tempDrinkList = DrinkLogic.drinks.Cast<Product>().ToList();
+            tempFoodList.ForEach(item=> tempDrinkList.Add(item));
+
+            foreach(var item in tempDrinkList)
+            {
+                if (quantity > item.Quantity)
+                    return true;
+            }
+            return false;
         }
     }
 }

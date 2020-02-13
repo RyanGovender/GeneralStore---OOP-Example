@@ -18,6 +18,8 @@ namespace GeneralStore
             var items=UserI.BuyItems();
             CalculationLogic cal = new CalculationLogic(items, customer1);
             Console.WriteLine("Your total cost is :"+cal.CalculateFinalCost());
+
+            StoreLogic.CheckQuantity(4);
             paymentOption.PayOption(cal.CalculateFinalCost());
 
 

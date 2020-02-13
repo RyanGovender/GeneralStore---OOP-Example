@@ -62,9 +62,6 @@ namespace GeneralStore.LogicLayer
             return costPrice;
         }
 
-        public static void RemoveItemFromList(int id)
-        {
-            _itemInCart.;
-        }
+       
     }
 }

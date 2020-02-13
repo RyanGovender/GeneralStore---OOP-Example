@@ -20,7 +20,6 @@ namespace GeneralStore.LogicLayer
         }
         public List<int> BuyItems()
         {
-          
             do
             {
                 Console.WriteLine("Enter the product code of the item you want to buy (Enter Done to complete your order.):");
@@ -30,10 +29,18 @@ namespace GeneralStore.LogicLayer
                     Console.WriteLine("Enter the Quantity you would like to buy:");
                     if (int.TryParse(Console.ReadLine(), out quantity))
                     {
-                        for (int i = 0; i < quantity; i++)
+                        if(!StoreLogic.CheckQuantity(quantity))
                         {
-                            numbers.Add(id);
+                            for (int i = 0; i < quantity; i++)
+                            {
+                                numbers.Add(id);
+                            }
                         }
+                        else
+                        {
+                            Console.WriteLine("Insufficient Stock of this item.");
+                        }
+                       
                     }
                 }
                 else if(!code.ToLower().Equals("done"))
@@ -44,9 +51,6 @@ namespace GeneralStore.LogicLayer
             } while (!code.ToLower().Equals("done"));
 
             return numbers;
-
         }
-
-        
-}
     }
+}
