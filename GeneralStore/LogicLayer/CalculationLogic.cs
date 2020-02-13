@@ -64,7 +64,7 @@ namespace GeneralStore.LogicLayer
 
         public static void RemoveItemFromList(int id)
         {
-            _itemInCart.Remove(id);
+            _itemInCart.;
         }
     }
 }

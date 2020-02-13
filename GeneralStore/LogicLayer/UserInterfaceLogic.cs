@@ -36,7 +36,7 @@ namespace GeneralStore.LogicLayer
                         }
                     }
                 }
-                else
+                else if(!code.ToLower().Equals("done"))
                 {
                     Console.WriteLine("Invalid Product Code.");
                 }

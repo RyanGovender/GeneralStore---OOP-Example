@@ -66,7 +66,7 @@ namespace GeneralStore.LogicLayer
                     }
                     else
                     {
-                       
+                        CalculationLogic.RemoveItemFromList(id);
                         Console.WriteLine($"Item {item.Name} is out of stock...");
                     }
                     break;
